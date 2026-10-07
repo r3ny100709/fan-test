@@ -1,1471 +1,845 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-
 <meta charset="UTF-8">
-
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1.0"
 >
-
 <title>รับสมัครลูกทีม ♡</title>
-
 <style>
-
 @import url('https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@400;500;600;700&display=swap');
-
-
+/* =====================================================
+   BASIC
+===================================================== */
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
-
-
 html,
 body{
   width:100%;
   min-height:100%;
 }
-
-
 body{
-
   min-height:100vh;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
-  padding:40px;
-
-  background:#f5d7eb;
-
+  padding:30px;
+  background:#f3d4e9;
   font-family:
     Mali,
     sans-serif;
-
-  color:#392d39;
-
+  color:#382d38;
 }
-
-
 /* =====================================================
    POSTER
 ===================================================== */
-
 .poster{
-
   position:relative;
-
-  width:min(1100px,92vw);
-
+  width:min(1100px,94vw);
   aspect-ratio:1 / 1;
-
   overflow:hidden;
-
   border-radius:42px;
-
   background:
-
     radial-gradient(
-      circle at 15% 20%,
-      rgba(255,255,255,.75) 0 90px,
-      transparent 91px
+      circle at 0% 0%,
+      rgba(255,255,255,.9) 0 135px,
+      transparent 136px
     ),
-
     radial-gradient(
-      circle at 94% 13%,
-      rgba(255,255,255,.45) 0 120px,
-      transparent 121px
+      circle at 100% 100%,
+      rgba(255,255,255,.5) 0 180px,
+      transparent 181px
     ),
-
     linear-gradient(
       135deg,
-      #ffe5f6 0%,
-      #f8d4ee 48%,
-      #ffdff2 100%
+      #ffe1f4 0%,
+      #f8d4ed 48%,
+      #ffe5f5 100%
     );
-
   border:
     5px solid
     rgba(255,255,255,.95);
-
   box-shadow:
-
-    0 30px 90px
-    rgba(140,80,130,.25),
-
+    0 30px 80px
+    rgba(140,80,130,.22),
     inset 0 0 0 3px
     rgba(230,151,204,.35);
-
 }
-
-
 /* =====================================================
    BACKGROUND SHAPES
 ===================================================== */
-
 .shape{
-
   position:absolute;
-
   border-radius:50%;
-
   pointer-events:none;
-
 }
-
-
 .shape.a{
-
-  width:420px;
-  height:420px;
-
-  left:-250px;
-  bottom:-120px;
-
+  width:430px;
+  height:430px;
+  left:-270px;
+  bottom:-180px;
   background:
-    rgba(255,255,255,.3);
-
+    rgba(255,255,255,.32);
 }
-
-
 .shape.b{
-
-  width:360px;
-  height:360px;
-
-  right:-190px;
-  top:180px;
-
+  width:350px;
+  height:350px;
+  right:-200px;
+  top:130px;
+  background:
+    rgba(255,255,255,.25);
+}
+.shape.c{
+  width:210px;
+  height:210px;
+  left:43%;
+  top:-150px;
   background:
     rgba(255,255,255,.28);
-
 }
-
-
-.shape.c{
-
-  width:180px;
-  height:180px;
-
-  left:380px;
-  top:-100px;
-
-  background:
-    rgba(255,255,255,.35);
-
-}
-
-
 /* =====================================================
-   LITTLE DECORATIONS
+   DECORATIONS
 ===================================================== */
-
 .decor{
-
   position:absolute;
-
-  color:#df8db9;
-
-  font-family:
-    Georgia,
-    serif;
-
-  opacity:.75;
-
   z-index:2;
-
+  color:#df8db9;
+  font-family:Georgia,serif;
+  opacity:.72;
+  pointer-events:none;
 }
-
-
 .decor.one{
-
-  left:45px;
-  top:48px;
-
+  left:35px;
+  top:32px;
   font-size:48px;
-
   transform:rotate(-15deg);
-
 }
-
-
 .decor.two{
-
-  right:45px;
-  top:80px;
-
-  font-size:34px;
-
-  transform:rotate(16deg);
-
+  right:35px;
+  top:35px;
+  font-size:38px;
+  transform:rotate(15deg);
 }
-
-
 .decor.three{
-
-  left:80px;
-  bottom:150px;
-
+  left:45px;
+  bottom:110px;
   font-size:30px;
-
 }
-
-
 .decor.four{
-
-  right:370px;
-  bottom:55px;
-
+  right:45px;
+  bottom:75px;
   font-size:25px;
-
 }
-
-
 /* =====================================================
-   MAIN LAYOUT
+   MAIN CONTENT
 ===================================================== */
-
 .layout{
-
   position:relative;
-
   z-index:5;
-
   width:100%;
   height:100%;
-
   padding:
-    58px
-    60px
-    48px;
-
+    38px
+    46px
+    34px;
 }
-
-
 /* =====================================================
-   TOP LABEL
+   HEADER LABEL
 ===================================================== */
-
 .eyebrow{
-
-  display:inline-flex;
-
-  align-items:center;
-
-  gap:10px;
-
+  width:max-content;
+  margin:auto;
   padding:
-    8px
+    7px
     18px;
-
   border-radius:30px;
-
   background:
-    rgba(255,255,255,.72);
-
-  color:#c978a5;
-
-  font-size:16px;
-
+    rgba(255,255,255,.7);
+  color:#c878a4;
+  font-size:15px;
   font-weight:700;
-
   letter-spacing:1px;
-
-  box-shadow:
-    0 7px 20px
-    rgba(180,100,155,.08);
-
 }
-
-
-.eyebrow::before{
-
-  content:"♡";
-
-  color:#ed8ab8;
-
-  font-size:20px;
-
-}
-
-
 /* =====================================================
-   HERO
+   MAIN TITLE
 ===================================================== */
-
 .hero{
-
-  position:relative;
-
-  width:100%;
-
-  margin-top:15px;
-
-}
-
-
-.hero-title{
-
-  position:relative;
-
-  z-index:4;
-
-  width:65%;
-
-}
-
-
-.hero-title h1{
-
-  color:#302630;
-
-  font-size:64px;
-
-  line-height:.98;
-
-  font-weight:700;
-
-  letter-spacing:-2px;
-
-}
-
-
-.hero-title h1 span{
-
-  color:#df78ae;
-
-}
-
-
-.hero-subtitle{
-
-  margin-top:17px;
-
-  width:88%;
-
-  color:#4d3c4d;
-
-  font-size:23px;
-
-  line-height:1.5;
-
-  font-weight:600;
-
-}
-
-
-.free-label{
-
-  display:inline-block;
-
   margin-top:12px;
-
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
+.hero-box{
+  width:78%;
+  padding:
+    22px
+    35px
+    20px;
+  text-align:center;
+  background:
+    rgba(255,255,255,.9);
+  border-radius:32px;
+  box-shadow:
+    0 10px 25px
+    rgba(160,90,145,.08);
+}
+.hero-box h1{
+  color:#302630;
+  font-size:62px;
+  line-height:1;
+  font-weight:700;
+  letter-spacing:0;
+}
+.hero-box h1 span{
+  color:#df78ae;
+}
+.hero-subtitle{
+  margin-top:12px;
+  color:#4d3c4d;
+  font-size:22px;
+  line-height:1.4;
+  font-weight:600;
+}
+.free-label{
+  display:inline-block;
+  margin-top:10px;
   padding:
     5px
     15px;
-
-  border-radius:15px;
-
-  background:#fff;
-
-  color:#ff657e;
-
-  font-size:16px;
-
+  border-radius:16px;
+  background:#fff0f7;
+  color:#ff617b;
+  font-size:15px;
   font-weight:700;
-
-  transform:rotate(-2deg);
-
-  box-shadow:
-    0 5px 15px
-    rgba(170,90,140,.08);
-
 }
-
-
 /* =====================================================
-   CHARACTER AREA
+   MAIN INFORMATION GRID
 ===================================================== */
-
-.character-wrap{
-
-  position:absolute;
-
-  z-index:3;
-
-  right:-28px;
-
-  top:20px;
-
-  width:51%;
-
-  height:55%;
-
-  display:flex;
-
-  align-items:flex-end;
-
-  justify-content:center;
-
-}
-
-
-.character{
-
+.information{
   width:100%;
-
-  height:auto;
-
-  max-height:100%;
-
-  object-fit:contain;
-
-  object-position:center bottom;
-
-  filter:
-    drop-shadow(
-      0 16px 20px
-      rgba(120,70,110,.13)
-    );
-
-  pointer-events:none;
-
-  user-select:none;
-
+  margin-top:17px;
 }
-
-
 /* =====================================================
-   INFO AREA
+   SERVICE ROW
 ===================================================== */
-
-.info{
-
-  position:absolute;
-
-  left:60px;
-
-  bottom:112px;
-
-  z-index:7;
-
-  width:61%;
-
-}
-
-
-/* =====================================================
-   INFO ROW
-===================================================== */
-
-.info-row{
-
-  display:flex;
-
-  align-items:stretch;
-
+.service-row{
+  display:grid;
+  grid-template-columns:
+    1fr
+    1fr;
   gap:15px;
-
-  margin-top:13px;
-
 }
-
-
-.info-card{
-
-  flex:1;
-
-  min-height:118px;
-
-  padding:
-    16px
-    20px;
-
+.card{
   background:
     rgba(255,255,255,.88);
-
-  border-radius:24px;
-
+  border-radius:25px;
   box-shadow:
-    0 10px 25px
-    rgba(160,90,145,.08);
-
+    0 8px 22px
+    rgba(160,90,145,.07);
 }
-
-
-.info-card.wide{
-
-  flex:1.5;
-
-}
-
-
-.card-label{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:8px;
-
-  margin-bottom:7px;
-
-  color:#d77bab;
-
-  font-size:18px;
-
-  font-weight:700;
-
-}
-
-
-.card-label span{
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  width:29px;
-  height:29px;
-
-  border-radius:10px;
-
-  background:#fff0f8;
-
-  color:#df83b1;
-
-}
-
-
-.info-card p{
-
-  font-size:14px;
-
-  line-height:1.55;
-
-}
-
-
-.info-card ul{
-
-  list-style:none;
-
-}
-
-
-.info-card li{
-
-  position:relative;
-
-  padding-left:16px;
-
-  margin:3px 0;
-
-  font-size:13px;
-
-  line-height:1.5;
-
-}
-
-
-.info-card li::before{
-
-  content:"♡";
-
-  position:absolute;
-
-  left:0;
-
-  color:#e58ab6;
-
-  font-size:12px;
-
-}
-
-
-/* =====================================================
-   WORK FLOW CARD
-===================================================== */
-
-.workflow{
-
-  position:relative;
-
-  margin-top:13px;
-
+.service-card{
+  min-height:125px;
   padding:
     15px
     20px;
-
-  border-radius:24px;
-
-  background:
-    rgba(255,255,255,.9);
-
-  box-shadow:
-    0 10px 25px
-    rgba(160,90,145,.08);
-
 }
-
-
-.workflow-title{
-
+.card-title{
   display:flex;
-
-  align-items:center;
-
-  gap:9px;
-
-  color:#d477a7;
-
-  font-size:18px;
-
-  font-weight:700;
-
-}
-
-
-.workflow-title .icon{
-
-  display:flex;
-
   align-items:center;
   justify-content:center;
-
-  width:29px;
-  height:29px;
-
-  border-radius:10px;
-
-  background:#fff0f8;
-
-}
-
-
-.workflow-text{
-
-  margin-top:7px;
-
-  font-size:13px;
-
-  line-height:1.55;
-
-}
-
-
-.workflow-text strong{
-
-  color:#df6f9f;
-
-}
-
-
-/* =====================================================
-   BOTTOM BAR
-===================================================== */
-
-.bottom{
-
-  position:absolute;
-
-  left:60px;
-  right:60px;
-  bottom:35px;
-
-  z-index:10;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-}
-
-
-.line{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:9px;
-
-  color:#423441;
-
-  font-size:21px;
-
-  font-weight:600;
-
-}
-
-
-.line strong{
-
-  color:#d976a9;
-
-}
-
-
-.requirement{
-
-  padding:
-    8px
-    16px;
-
-  border-radius:18px;
-
-  background:
-    rgba(255,255,255,.72);
-
-  color:#82647d;
-
-  font-size:13px;
-
-  font-weight:600;
-
-}
-
-
-/* =====================================================
-   DECORATIVE MINI STICKER
-===================================================== */
-
-.sticker{
-
-  position:absolute;
-
-  right:48px;
-
-  bottom:225px;
-
-  z-index:9;
-
-  padding:
-    8px
-    14px;
-
-  border-radius:16px;
-
-  background:#fff;
-
-  color:#df7cad;
-
-  font-size:13px;
-
+  gap:8px;
+  margin-bottom:8px;
+  color:#d476a6;
+  font-size:19px;
   font-weight:700;
-
-  box-shadow:
-    0 7px 20px
-    rgba(170,90,145,.12);
-
-  transform:rotate(5deg);
-
 }
-
-
+.card-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:27px;
+  height:27px;
+  border-radius:9px;
+  background:#fff0f8;
+}
+.service-list{
+  list-style:none;
+}
+.service-list li{
+  position:relative;
+  padding-left:18px;
+  margin:3px 0;
+  font-size:14px;
+  line-height:1.45;
+}
+.service-list li::before{
+  content:"♡";
+  position:absolute;
+  left:0;
+  color:#df83b0;
+  font-size:12px;
+}
+/* =====================================================
+   WORK CONDITION
+===================================================== */
+.condition{
+  margin-top:15px;
+  padding:
+    15px
+    22px;
+}
+.condition-head{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-bottom:7px;
+  color:#d476a6;
+  font-size:19px;
+  font-weight:700;
+}
+.condition-text{
+  font-size:13px;
+  line-height:1.52;
+  text-align:center;
+}
+.condition-text .note{
+  color:#816d7e;
+  font-size:11px;
+}
+.condition-text strong{
+  color:#df6e9f;
+  font-size:16px;
+}
+/* =====================================================
+   TWO LOWER CARDS
+===================================================== */
+.lower-row{
+  display:grid;
+  grid-template-columns:
+    1.25fr
+    1fr;
+  gap:15px;
+  margin-top:15px;
+}
+.lower-card{
+  min-height:135px;
+  padding:
+    15px
+    20px;
+}
+.lower-card p{
+  font-size:12.5px;
+  line-height:1.55;
+}
+.lower-card p + p{
+  margin-top:7px;
+}
+.lower-card strong{
+  color:#df6e9f;
+}
+/* =====================================================
+   QUALIFICATIONS
+===================================================== */
+.qualification{
+  margin-top:15px;
+  padding:
+    14px
+    20px;
+  display:grid;
+  grid-template-columns:
+    170px
+    1fr;
+  align-items:center;
+  gap:20px;
+}
+.qualification-title{
+  text-align:center;
+  color:#302630;
+  font-size:30px;
+  font-weight:700;
+}
+.qualification-list{
+  display:grid;
+  grid-template-columns:
+    1fr
+    1fr
+    1fr;
+  gap:10px;
+}
+.qualification-item{
+  min-height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:
+    8px
+    10px;
+  text-align:center;
+  border-radius:16px;
+  background:#fff2f9;
+  color:#554354;
+  font-size:11px;
+  line-height:1.4;
+  font-weight:600;
+}
+/* =====================================================
+   FOOTER
+===================================================== */
+.footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:14px;
+}
+.line{
+  color:#382d38;
+  font-size:20px;
+  font-weight:600;
+}
+.line span{
+  color:#d875a8;
+}
+.footer-note{
+  padding:
+    6px
+    14px;
+  border-radius:16px;
+  background:
+    rgba(255,255,255,.68);
+  color:#80677b;
+  font-size:11px;
+  font-weight:600;
+}
 /* =====================================================
    RESPONSIVE
 ===================================================== */
-
 @media(max-width:900px){
-
   body{
-    padding:15px;
+    padding:12px;
   }
-
-
   .poster{
-
     width:96vw;
-
     border-radius:30px;
-
   }
-
-
   .layout{
-
     padding:
-      38px
-      38px
-      30px;
-
+      28px
+      32px
+      24px;
   }
-
-
-  .eyebrow{
-    font-size:12px;
-    padding:6px 12px;
+  .hero-box{
+    width:82%;
+    padding:
+      17px
+      20px;
   }
-
-
-  .hero-title h1{
-    font-size:48px;
+  .hero-box h1{
+    font-size:46px;
   }
-
-
   .hero-subtitle{
-    font-size:17px;
+    font-size:16px;
   }
-
-
   .free-label{
-    font-size:12px;
+    font-size:11px;
   }
-
-
-  .info{
-    left:38px;
-    bottom:85px;
-    width:61%;
+  .card-title{
+    font-size:14px;
   }
-
-
-  .info-row{
-    gap:9px;
-    margin-top:8px;
+  .service-card{
+    min-height:100px;
+    padding:11px 14px;
   }
-
-
-  .info-card{
-    min-height:85px;
-    padding:11px 13px;
-    border-radius:18px;
-  }
-
-
-  .card-label{
-    font-size:13px;
-    margin-bottom:4px;
-  }
-
-
-  .card-label span{
-    width:22px;
-    height:22px;
-    border-radius:7px;
-  }
-
-
-  .info-card p,
-  .info-card li,
-  .workflow-text{
+  .service-list li{
     font-size:10px;
   }
-
-
-  .workflow{
-    margin-top:8px;
-    padding:10px 13px;
-    border-radius:18px;
+  .condition{
+    padding:11px 15px;
   }
-
-
-  .workflow-title{
-    font-size:13px;
+  .condition-head{
+    font-size:14px;
   }
-
-
-  .workflow-title .icon{
-    width:22px;
-    height:22px;
+  .condition-text{
+    font-size:10px;
   }
-
-
-  .character-wrap{
-    right:-15px;
-    top:35px;
-    width:49%;
-    height:53%;
+  .condition-text .note{
+    font-size:8px;
   }
-
-
-  .sticker{
-    right:25px;
-    bottom:175px;
+  .lower-card{
+    min-height:105px;
+    padding:11px 14px;
+  }
+  .lower-card p{
     font-size:9px;
   }
-
-
-  .bottom{
-    left:38px;
-    right:38px;
-    bottom:24px;
+  .qualification{
+    grid-template-columns:
+      125px
+      1fr;
+    padding:10px 14px;
+    gap:10px;
   }
-
-
+  .qualification-title{
+    font-size:22px;
+  }
+  .qualification-item{
+    font-size:8px;
+    min-height:43px;
+  }
   .line{
-    font-size:15px;
+    font-size:14px;
   }
-
-
-  .requirement{
-    font-size:9px;
-    padding:6px 10px;
+  .footer-note{
+    font-size:8px;
   }
-
 }
-
-
 /* =====================================================
    SMALL MOBILE
 ===================================================== */
-
 @media(max-width:600px){
-
   body{
-    padding:5px;
+    padding:4px;
   }
-
-
   .poster{
-
     width:100vw;
-
     border-width:3px;
-
     border-radius:18px;
-
   }
-
-
   .layout{
-
     padding:
-      25px
-      23px
-      22px;
-
+      21px
+      18px
+      17px;
   }
-
-
   .eyebrow{
-
-    font-size:8px;
-
-    padding:4px 9px;
-
+    padding:
+      4px
+      9px;
+    font-size:7px;
   }
-
-
-  .eyebrow::before{
-    font-size:12px;
-  }
-
-
   .hero{
-
+    margin-top:7px;
+  }
+  .hero-box{
+    width:88%;
+    padding:
+      12px
+      10px;
+    border-radius:19px;
+  }
+  .hero-box h1{
+    font-size:29px;
+  }
+  .hero-subtitle{
+    margin-top:6px;
+    font-size:9px;
+  }
+  .free-label{
+    margin-top:5px;
+    padding:
+      3px
+      8px;
+    font-size:6.5px;
+  }
+  .information{
     margin-top:9px;
   }
-
-
-  .hero-title{
-
-    width:65%;
+  .service-row{
+    gap:7px;
   }
-
-
-  .hero-title h1{
-
-    font-size:30px;
-
-    letter-spacing:-1px;
-
+  .service-card{
+    min-height:75px;
+    padding:
+      7px
+      8px;
+    border-radius:13px;
   }
-
-
-  .hero-subtitle{
-
-    width:95%;
-
-    margin-top:8px;
-
-    font-size:10px;
-
-  }
-
-
-  .free-label{
-
-    margin-top:6px;
-
-    padding:3px 7px;
-
-    font-size:7px;
-
-  }
-
-
-  .character-wrap{
-
-    right:-8px;
-
-    top:30px;
-
-    width:50%;
-
-    height:50%;
-
-  }
-
-
-  .info{
-
-    left:23px;
-
-    bottom:57px;
-
-    width:62%;
-
-  }
-
-
-  .info-row{
-
-    gap:5px;
-
-    margin-top:5px;
-
-  }
-
-
-  .info-card{
-
-    min-height:59px;
-
-    padding:6px 7px;
-
-    border-radius:11px;
-
-  }
-
-
-  .card-label{
-
-    gap:4px;
-
-    margin-bottom:2px;
-
-    font-size:7px;
-
-  }
-
-
-  .card-label span{
-
-    width:13px;
-    height:13px;
-
-    border-radius:4px;
-
-    font-size:7px;
-
-  }
-
-
-  .info-card p,
-  .info-card li,
-  .workflow-text{
-
-    font-size:5.7px;
-
-    line-height:1.4;
-
-  }
-
-
-  .info-card li{
-
-    padding-left:8px;
-
-    margin:1px 0;
-
-  }
-
-
-  .info-card li::before{
-    font-size:7px;
-  }
-
-
-  .workflow{
-
-    margin-top:5px;
-
-    padding:6px 7px;
-
-    border-radius:11px;
-
-  }
-
-
-  .workflow-title{
-
-    gap:4px;
-
-    font-size:7px;
-
-  }
-
-
-  .workflow-title .icon{
-
-    width:13px;
-    height:13px;
-
-    border-radius:4px;
-
-  }
-
-
-  .sticker{
-
-    right:10px;
-
-    bottom:122px;
-
-    padding:3px 6px;
-
-    border-radius:7px;
-
-    font-size:5px;
-
-  }
-
-
-  .bottom{
-
-    left:23px;
-
-    right:23px;
-
-    bottom:11px;
-
-  }
-
-
-  .line{
-
-    gap:4px;
-
+  .card-title{
+    gap:3px;
+    margin-bottom:3px;
     font-size:8px;
-
   }
-
-
-  .requirement{
-
-    font-size:5px;
-
-    padding:3px 5px;
-
+  .card-icon{
+    width:13px;
+    height:13px;
+    border-radius:4px;
+    font-size:7px;
+  }
+  .service-list li{
+    font-size:5.7px;
+    padding-left:8px;
+    margin:1px 0;
+  }
+  .service-list li::before{
+    font-size:6px;
+  }
+  .condition{
+    margin-top:7px;
+    padding:
+      7px
+      9px;
+    border-radius:13px;
+  }
+  .condition-head{
+    gap:3px;
+    margin-bottom:3px;
+    font-size:8px;
+  }
+  .condition-text{
+    font-size:5.5px;
+    line-height:1.45;
+  }
+  .condition-text .note{
+    font-size:4.7px;
+  }
+  .condition-text strong{
+    font-size:7px;
+  }
+  .lower-row{
+    gap:7px;
+    margin-top:7px;
+  }
+  .lower-card{
+    min-height:77px;
+    padding:
+      7px
+      8px;
+    border-radius:13px;
+  }
+  .lower-card p{
+    font-size:5.4px;
+    line-height:1.45;
+  }
+  .lower-card p + p{
+    margin-top:3px;
+  }
+  .qualification{
+    margin-top:7px;
+    padding:
+      7px
+      8px;
+    grid-template-columns:
+      62px
+      1fr;
+    gap:6px;
+    border-radius:13px;
+  }
+  .qualification-title{
+    font-size:13px;
+  }
+  .qualification-list{
+    gap:4px;
+  }
+  .qualification-item{
+    min-height:31px;
+    padding:
+      3px
+      4px;
+    border-radius:8px;
+    font-size:4.6px;
+  }
+  .footer{
+    margin-top:7px;
+  }
+  .line{
+    font-size:8px;
+  }
+  .footer-note{
+    padding:
+      3px
+      6px;
     border-radius:7px;
-
+    font-size:4.5px;
   }
-
-
   .decor.one{
-    left:18px;
-    top:28px;
-    font-size:24px;
+    left:15px;
+    top:22px;
+    font-size:22px;
   }
-
-
   .decor.two{
-    right:15px;
-    top:55px;
-    font-size:19px;
+    right:14px;
+    top:23px;
+    font-size:18px;
   }
-
-
   .decor.three{
-    left:20px;
-    bottom:80px;
-    font-size:17px;
+    left:17px;
+    bottom:75px;
+    font-size:16px;
   }
-
-
   .decor.four{
-    right:120px;
-    bottom:25px;
-    font-size:14px;
+    right:18px;
+    bottom:55px;
+    font-size:13px;
   }
-
 }
-
 </style>
-
 </head>
-
-
 <body>
-
-
 <main class="poster">
-
-
-  <!-- BACKGROUND -->
-
+  <!-- BACKGROUND SHAPES -->
   <div class="shape a"></div>
   <div class="shape b"></div>
   <div class="shape c"></div>
-
-
   <!-- DECORATION -->
-
   <div class="decor one">♡</div>
   <div class="decor two">✦</div>
   <div class="decor three">♡</div>
   <div class="decor four">✦</div>
-
-
   <div class="layout">
-
-
-    <!-- SMALL HEADER -->
-
+    <!-- SMALL LABEL -->
     <div class="eyebrow">
       LOOKING FOR TEAMMATES
     </div>
-
-
-    <!-- HERO -->
-
+    <!-- MAIN TITLE -->
     <section class="hero">
-
-
-      <div class="hero-title">
-
+      <div class="hero-box">
         <h1>
-          รับสมัคร<br>
-          <span>ลูกทีม</span>
+          รับสมัคร <span>ลูกทีม</span>
         </h1>
-
-
         <p class="hero-subtitle">
-          ช่วยรับงานทำรายงาน<br>
-          และงาน Canva
+          ช่วยรับงานทำรายงานและ Canva
         </p>
-
-
         <div class="free-label">
           ♡ ไม่เสียค่าสมัคร
         </div>
-
       </div>
-
-
-      <!-- CHARACTER -->
-
-      <div class="character-wrap">
-
-        <img
-          class="character"
-          src="./ไม่มีชื่อ 114_20261007180511.png"
-          alt="anime character"
-        >
-
-      </div>
-
-
     </section>
-
-
     <!-- INFORMATION -->
-
-    <section class="info">
-
-
-      <div class="info-row">
-
-
-        <!-- HANDWRITING -->
-
-        <article class="info-card">
-
-          <div class="card-label">
-
-            <span>✎</span>
-
+    <section class="information">
+      <!-- SERVICES -->
+      <div class="service-row">
+        <article class="card service-card">
+          <div class="card-title">
+            <span class="card-icon">
+              ✎
+            </span>
             เขียนมือ
-
           </div>
-
-          <ul>
-
-            <li>เขียนรายงาน</li>
-
-            <li>เขียนงานลงสมุด</li>
-
-            <li>เขียนชีทบท iPad</li>
-
+          <ul class="service-list">
+            <li>
+              เขียนรายงาน
+            </li>
+            <li>
+              เขียนงานลงสมุด
+            </li>
+            <li>
+              เขียนชีทบท iPad
+            </li>
           </ul>
-
         </article>
-
-
-        <!-- IPAD -->
-
-        <article class="info-card">
-
-          <div class="card-label">
-
-            <span>♡</span>
-
+        <article class="card service-card">
+          <div class="card-title">
+            <span class="card-icon">
+              ♡
+            </span>
             iPad
-
           </div>
-
-          <ul>
-
-            <li>ทำ Mind Map</li>
-
-            <li>ทำสไลด์นำเสนอ</li>
-
+          <ul class="service-list">
+            <li>
+              ทำ Mind Map
+            </li>
+            <li>
+              ทำสไลด์นำเสนอ
+            </li>
           </ul>
-
         </article>
-
-
       </div>
-
-
-      <!-- WORKING CONDITIONS -->
-
-      <article class="workflow">
-
-        <div class="workflow-title">
-
-          <span class="icon">
+      <!-- WORKING CONDITION -->
+      <article class="card condition">
+        <div class="condition-head">
+          <span class="card-icon">
             ✦
           </span>
-
           เงื่อนไขการทำงาน
-
         </div>
-
-
-        <p class="workflow-text">
-
+        <div class="condition-text">
           เราเป็นคนหาลูกค้าและรับรีฟงานให้ทั้งหมด
           ลูกทีมมีหน้าที่ทำตามบรีฟและส่งงานตามที่กำหนด
-
           <br>
-
           งานไม่ได้มาตลอด แต่มีมาเรื่อย ๆ
-
           <br>
-
-          <span style="color:#806477;">
+          <span class="note">
             (ประกาศแจ้งในกลุ่ม ใครว่างหรือสะดวกรับเคสไหนค่อยทักจอง)
           </span>
-
           <br>
-
           ค่าคอมมิชชันรับไปเลย
           <strong>60%</strong>
           ของราคางานทั้งหมด
-
-        </p>
-
+        </div>
       </article>
-
-
-      <!-- COST + QUALIFICATION -->
-
-      <div class="info-row">
-
-
-        <article class="info-card wide">
-
-          <div class="card-label">
-
-            <span>♡</span>
-
+      <!-- COST + CANVA -->
+      <div class="lower-row">
+        <article class="card lower-card">
+          <div class="card-title">
+            <span class="card-icon">
+              ♡
+            </span>
             ค่าใช้จ่ายพัสดุ
-
           </div>
-
           <p>
-
             งานจัดส่ง เราออกค่าส่งและมีงบสนับสนุน
             ค่าอุปกรณ์ให้เพิ่มเติม
-
-            <br>
-
-            งาน Canva ทำเสร็จส่งออนไลน์
-            รับเงินเต็มจำนวน ไม่มีค่าส่ง
-
           </p>
-
+          <p>
+            งาน Canva ทำเสร็จส่งออนไลน์
+            รับเงินเต็มจำนวน
+            <strong>ไม่มีค่าส่ง</strong>
+          </p>
         </article>
-
-
-        <article class="info-card">
-
-          <div class="card-label">
-
-            <span>✓</span>
-
-            คุณสมบัติ
-
+        <article class="card lower-card">
+          <div class="card-title">
+            <span class="card-icon">
+              ✓
+            </span>
+            สิ่งที่ต้องมี
           </div>
-
-          <ul>
-
-            <li>มีความรับผิดชอบ ส่งงานตรงเวลา</li>
-
-            <li>ขยัน ตั้งใจทำงาน และพร้อมเรียนรู้</li>
-
-            <li>สะดวกจัดการเรื่องการส่งพัสดุ</li>
-
-          </ul>
-
+          <p>
+            มีความรับผิดชอบ ส่งงานตรงเวลา
+          </p>
+          <p>
+            ขยัน ตั้งใจทำงาน และพร้อมเรียนรู้
+          </p>
+          <p>
+            สะดวกจัดการเรื่องการส่งพัสดุ
+          </p>
         </article>
-
-
       </div>
-
-
+      <!-- QUALIFICATIONS -->
+      <section class="card qualification">
+        <h2 class="qualification-title">
+          คุณสมบัติ
+        </h2>
+        <div class="qualification-list">
+          <div class="qualification-item">
+            รับผิดชอบ<br>
+            ส่งงานตรงเวลา
+          </div>
+          <div class="qualification-item">
+            ขยัน<br>
+            พร้อมเรียนรู้
+          </div>
+          <div class="qualification-item">
+            จัดการ<br>
+            การส่งพัสดุได้
+          </div>
+        </div>
+      </section>
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="line">
+          line :
+          <span>r13hjk</span>
+        </div>
+        <div class="footer-note">
+          รับงานตามความสะดวก · ไม่มีค่าสมัคร
+        </div>
+      </footer>
     </section>
-
-
-    <!-- DECORATIVE STICKER -->
-
-    <div class="sticker">
-      ♡ TEAM WORK ♡
-    </div>
-
-
-    <!-- BOTTOM -->
-
-    <footer class="bottom">
-
-      <div class="line">
-        line :
-        <strong>r13hjk</strong>
-      </div>
-
-
-      <div class="requirement">
-        รับงานตามความสะดวก · ไม่มีค่าสมัคร
-      </div>
-
-    </footer>
-
-
   </div>
-
-
 </main>
-
-
 </body>
 </html>
