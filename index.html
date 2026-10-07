@@ -103,7 +103,7 @@ body{
   z-index:5;
   width:100%;
   height:100%;
-  padding:4.2cqw 5cqw 3.8cqw;
+  padding:3.6cqw 5cqw 3.2cqw;
   display:grid;
   grid-template-rows:auto minmax(0,1fr) auto auto auto;
   row-gap:1.5cqw;
@@ -159,7 +159,7 @@ body{
 }
 .hero-title h1{
   color:#302630;
-  font-size:6.4cqw;
+  font-size:6cqw;
   line-height:1.05;
   font-weight:700;
   letter-spacing:-.15cqw;
@@ -225,7 +225,7 @@ body{
   background:rgba(255,255,255,.88);
   border-radius:2.4cqw;
   box-shadow:0 1cqw 2.4cqw rgba(160,90,145,.08);
-  padding:1.7cqw 2.2cqw;
+  padding:1.4cqw 2.2cqw;
 }
 
 .card-label,
@@ -255,8 +255,8 @@ body{
 
 .info-card p,
 .workflow-text{
-  font-size:2.05cqw;
-  line-height:1.55;
+  font-size:1.9cqw;
+  line-height:1.6;
 }
 .info-card ul{
   list-style:none;
@@ -283,8 +283,20 @@ body{
   color:#df6f9f;
   font-size:2.6cqw;
 }
+.workflow-text p + p{
+  margin-top:.9cqw;
+}
 .workflow-text .note{
+  display:inline-block;
+  margin-top:.3cqw;
   color:#806477;
+  font-size:1.6cqw;
+}
+.workflow-text .commission{
+  display:inline-block;
+  padding:.5cqw 1.6cqw;
+  border-radius:2cqw;
+  background:#fff0f8;
 }
 
 /* =====================================================
@@ -397,15 +409,11 @@ body{
         <span class="icon">✦</span>
         เงื่อนไขการทำงาน
       </div>
-      <p class="workflow-text">
-        เราเป็นคนหาลูกค้าและรับบรีฟงานให้ทั้งหมด
-        ลูกทีมมีหน้าที่ทำตามบรีฟและส่งงานตามที่กำหนด
-        <br>
-        งานไม่ได้มาตลอด แต่มีมาเรื่อย ๆ
-        <span class="note">(ประกาศแจ้งในกลุ่ม ใครว่างหรือสะดวกรับเคสไหนค่อยทักจอง)</span>
-        <br>
-        ค่าคอมมิชชันรับไปเลย <strong>60%</strong> ของราคางานทั้งหมด
-      </p>
+      <div class="workflow-text">
+        <p>เราเป็นคนหาลูกค้าและรับบรีฟงานให้ทั้งหมด ลูกทีมมีหน้าที่ทำตามบรีฟและส่งงานตามที่กำหนด</p>
+        <p>งานไม่ได้มาตลอด แต่มีมาเรื่อย ๆ<br><span class="note">(ประกาศแจ้งในกลุ่ม ใครว่างหรือสะดวกรับเคสไหนค่อยทักจอง)</span></p>
+        <p class="commission">ค่าคอมมิชชันรับไปเลย <strong>60%</strong> ของราคางานทั้งหมด</p>
+      </div>
     </article>
 
     <!-- 4) COST + QUALIFICATION -->
