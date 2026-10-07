@@ -2,73 +2,55 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>รับสมัครลูกทีม ♡</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@400;500;600;700&display=swap');
-/* =====================================================
-   BASIC
-===================================================== */
+
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
-html,
-body{
+
+html,body{
   width:100%;
   min-height:100%;
 }
+
 body{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:30px;
-  background:#f3d4e9;
-  font-family:
-    Mali,
-    sans-serif;
-  color:#382d38;
+  padding:20px;
+  background:#f5d7eb;
+  font-family:Mali,sans-serif;
+  color:#392d39;
 }
+
 /* =====================================================
-   POSTER
+   POSTER  (1:1)
+   ทุกขนาดในโปสเตอร์ใช้หน่วย cqw (1cqw = 1% ของความกว้างโปสเตอร์)
+   ทำให้องค์ประกอบย่อ/ขยายตามกรอบ 1:1 เท่ากันทุกหน้าจอ
 ===================================================== */
 .poster{
   position:relative;
-  width:min(1100px,94vw);
+  width:min(1100px,94vw,94vh);
   aspect-ratio:1 / 1;
+  container-type:inline-size;
   overflow:hidden;
-  border-radius:42px;
+  border-radius:4cqw;
   background:
-    radial-gradient(
-      circle at 0% 0%,
-      rgba(255,255,255,.9) 0 135px,
-      transparent 136px
-    ),
-    radial-gradient(
-      circle at 100% 100%,
-      rgba(255,255,255,.5) 0 180px,
-      transparent 181px
-    ),
-    linear-gradient(
-      135deg,
-      #ffe1f4 0%,
-      #f8d4ed 48%,
-      #ffe5f5 100%
-    );
-  border:
-    5px solid
-    rgba(255,255,255,.95);
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.75) 0 8cqw, transparent calc(8cqw + 1px)),
+    radial-gradient(circle at 94% 13%, rgba(255,255,255,.45) 0 11cqw, transparent calc(11cqw + 1px)),
+    linear-gradient(135deg,#ffe5f6 0%,#f8d4ee 48%,#ffdff2 100%);
+  border:.45cqw solid rgba(255,255,255,.95);
   box-shadow:
-    0 30px 80px
-    rgba(140,80,130,.22),
-    inset 0 0 0 3px
-    rgba(230,151,204,.35);
+    0 30px 90px rgba(140,80,130,.25),
+    inset 0 0 0 .3cqw rgba(230,151,204,.35);
 }
+
 /* =====================================================
    BACKGROUND SHAPES
 ===================================================== */
@@ -76,769 +58,379 @@ body{
   position:absolute;
   border-radius:50%;
   pointer-events:none;
+  z-index:0;
 }
 .shape.a{
-  width:430px;
-  height:430px;
-  left:-270px;
-  bottom:-180px;
-  background:
-    rgba(255,255,255,.32);
+  width:38cqw;height:38cqw;
+  left:-23cqw;bottom:-11cqw;
+  background:rgba(255,255,255,.3);
 }
 .shape.b{
-  width:350px;
-  height:350px;
-  right:-200px;
-  top:130px;
-  background:
-    rgba(255,255,255,.25);
+  width:33cqw;height:33cqw;
+  right:-17cqw;top:16cqw;
+  background:rgba(255,255,255,.28);
 }
 .shape.c{
-  width:210px;
-  height:210px;
-  left:43%;
-  top:-150px;
-  background:
-    rgba(255,255,255,.28);
+  width:16cqw;height:16cqw;
+  left:35cqw;top:-9cqw;
+  background:rgba(255,255,255,.35);
 }
+
 /* =====================================================
-   DECORATIONS
+   DECORATIONS (อยู่ที่ขอบมุม ไม่ทับเนื้อหา)
 ===================================================== */
 .decor{
   position:absolute;
-  z-index:2;
+  z-index:1;
   color:#df8db9;
   font-family:Georgia,serif;
-  opacity:.72;
+  opacity:.7;
+  line-height:1;
   pointer-events:none;
 }
-.decor.one{
-  left:35px;
-  top:32px;
-  font-size:48px;
-  transform:rotate(-15deg);
-}
-.decor.two{
-  right:35px;
-  top:35px;
-  font-size:38px;
-  transform:rotate(15deg);
-}
-.decor.three{
-  left:45px;
-  bottom:110px;
-  font-size:30px;
-}
-.decor.four{
-  right:45px;
-  bottom:75px;
-  font-size:25px;
-}
+.decor.one  {left:1.6cqw; top:1.2cqw;   font-size:2.8cqw; transform:rotate(-15deg);}
+.decor.two  {right:1.8cqw;top:1.4cqw;   font-size:2.4cqw; transform:rotate(16deg);}
+.decor.three{left:1.8cqw; bottom:1.2cqw;font-size:2.4cqw;}
+.decor.four {right:1.8cqw;bottom:1.2cqw;font-size:2.4cqw;}
+
 /* =====================================================
-   MAIN CONTENT
+   MAIN LAYOUT  — grid 5 แถว เรียงจากบนลงล่าง ไม่ซ้อนกัน
+   1) หัวป้าย  2) ส่วนหลัก (ชื่อ+ตัวการ์ตูน)  3) เงื่อนไข
+   4) ค่าใช้จ่าย+คุณสมบัติ  5) ช่องทางติดต่อ
 ===================================================== */
 .layout{
   position:relative;
   z-index:5;
   width:100%;
   height:100%;
-  padding:
-    38px
-    46px
-    34px;
+  padding:4.6cqw 5cqw 4.2cqw;
+  display:grid;
+  grid-template-rows:auto minmax(0,1fr) auto auto auto;
+  row-gap:1.7cqw;
 }
-/* =====================================================
-   HEADER LABEL
-===================================================== */
-.eyebrow{
-  width:max-content;
-  margin:auto;
-  padding:
-    7px
-    18px;
-  border-radius:30px;
-  background:
-    rgba(255,255,255,.7);
-  color:#c878a4;
-  font-size:15px;
-  font-weight:700;
-  letter-spacing:1px;
-}
-/* =====================================================
-   MAIN TITLE
-===================================================== */
-.hero{
-  margin-top:12px;
-  width:100%;
+
+/* ---------- แถว 1: header ---------- */
+.top{
   display:flex;
-  justify-content:center;
+  align-items:center;
+  justify-content:space-between;
 }
-.hero-box{
-  width:78%;
-  padding:
-    22px
-    35px
-    20px;
-  text-align:center;
-  background:
-    rgba(255,255,255,.9);
-  border-radius:32px;
-  box-shadow:
-    0 10px 25px
-    rgba(160,90,145,.08);
-}
-.hero-box h1{
-  color:#302630;
-  font-size:62px;
-  line-height:1;
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:.9cqw;
+  padding:.7cqw 1.7cqw;
+  border-radius:3cqw;
+  background:rgba(255,255,255,.72);
+  color:#c978a5;
+  font-size:1.7cqw;
   font-weight:700;
-  letter-spacing:0;
+  letter-spacing:.1cqw;
+  box-shadow:0 .6cqw 1.8cqw rgba(180,100,155,.08);
 }
-.hero-box h1 span{
+.eyebrow::before{
+  content:"♡";
+  color:#ed8ab8;
+  font-size:1.8cqw;
+}
+.sticker{
+  padding:.7cqw 1.4cqw;
+  border-radius:1.4cqw;
+  background:#fff;
+  color:#df7cad;
+  font-size:1.5cqw;
+  font-weight:700;
+  box-shadow:0 .6cqw 1.8cqw rgba(170,90,145,.12);
+  transform:rotate(3deg);
+}
+
+/* ---------- แถว 2: hero ---------- */
+.hero{
+  display:grid;
+  grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);
+  column-gap:1.5cqw;
+  min-height:0;
+}
+.hero-left{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:0;
+}
+.hero-title h1{
+  color:#302630;
+  font-size:6.9cqw;
+  line-height:1.05;
+  font-weight:700;
+  letter-spacing:-.15cqw;
+}
+.hero-title h1 span{
   color:#df78ae;
 }
 .hero-subtitle{
-  margin-top:12px;
+  margin-top:1.2cqw;
   color:#4d3c4d;
-  font-size:22px;
-  line-height:1.4;
+  font-size:2.5cqw;
+  line-height:1.45;
   font-weight:600;
 }
 .free-label{
   display:inline-block;
-  margin-top:10px;
-  padding:
-    5px
-    15px;
-  border-radius:16px;
-  background:#fff0f7;
-  color:#ff617b;
-  font-size:15px;
+  margin-top:1.1cqw;
+  padding:.5cqw 1.5cqw;
+  border-radius:1.4cqw;
+  background:#fff;
+  color:#ff657e;
+  font-size:1.8cqw;
   font-weight:700;
+  transform:rotate(-2deg);
+  box-shadow:0 .5cqw 1.5cqw rgba(170,90,140,.08);
 }
-/* =====================================================
-   MAIN INFORMATION GRID
-===================================================== */
-.information{
-  width:100%;
-  margin-top:17px;
-}
-/* =====================================================
-   SERVICE ROW
-===================================================== */
-.service-row{
+
+/* การ์ดเขียนมือ + iPad (อยู่ใต้ชื่อ ในคอลัมน์ซ้าย) */
+.skill-row{
   display:grid;
-  grid-template-columns:
-    1fr
-    1fr;
-  gap:15px;
+  grid-template-columns:1fr 1fr;
+  gap:1.4cqw;
+  margin-top:1.4cqw;
 }
-.card{
-  background:
-    rgba(255,255,255,.88);
-  border-radius:25px;
-  box-shadow:
-    0 8px 22px
-    rgba(160,90,145,.07);
+
+/* ตัวการ์ตูน (คอลัมน์ขวา) */
+.character-wrap{
+  position:relative;
+  min-height:0;
+  height:100%;
 }
-.service-card{
-  min-height:125px;
-  padding:
-    15px
-    20px;
+.character{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center bottom;
+  filter:drop-shadow(0 1.4cqw 2cqw rgba(120,70,110,.13));
+  pointer-events:none;
+  user-select:none;
 }
-.card-title{
+
+/* =====================================================
+   CARDS
+===================================================== */
+.info-card,
+.workflow{
+  background:rgba(255,255,255,.88);
+  border-radius:2.4cqw;
+  box-shadow:0 1cqw 2.4cqw rgba(160,90,145,.08);
+  padding:1.7cqw 2.2cqw;
+}
+
+.card-label,
+.workflow-title{
   display:flex;
   align-items:center;
-  justify-content:center;
-  gap:8px;
-  margin-bottom:8px;
-  color:#d476a6;
-  font-size:19px;
+  gap:.8cqw;
+  margin-bottom:.8cqw;
+  color:#d77bab;
+  font-size:2.1cqw;
   font-weight:700;
+  line-height:1.2;
 }
-.card-icon{
+.card-label span,
+.workflow-title .icon{
+  flex:none;
   display:flex;
   align-items:center;
   justify-content:center;
-  width:27px;
-  height:27px;
-  border-radius:9px;
+  width:3.2cqw;
+  height:3.2cqw;
+  border-radius:1cqw;
   background:#fff0f8;
+  color:#df83b1;
+  font-size:1.7cqw;
 }
-.service-list{
+
+.info-card p,
+.workflow-text{
+  font-size:1.6cqw;
+  line-height:1.55;
+}
+.info-card ul{
   list-style:none;
 }
-.service-list li{
+.info-card li{
   position:relative;
-  padding-left:18px;
-  margin:3px 0;
-  font-size:14px;
-  line-height:1.45;
+  padding-left:2cqw;
+  margin:.3cqw 0;
+  font-size:1.6cqw;
+  line-height:1.5;
 }
-.service-list li::before{
+.info-card li::before{
   content:"♡";
   position:absolute;
   left:0;
-  color:#df83b0;
-  font-size:12px;
+  color:#e58ab6;
+  font-size:1.5cqw;
 }
+
 /* =====================================================
-   WORK CONDITION
+   แถว 3: เงื่อนไขการทำงาน
 ===================================================== */
-.condition{
-  margin-top:15px;
-  padding:
-    15px
-    22px;
+.workflow-text strong{
+  color:#df6f9f;
+  font-size:2.1cqw;
 }
-.condition-head{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  margin-bottom:7px;
-  color:#d476a6;
-  font-size:19px;
-  font-weight:700;
+.workflow-text .note{
+  color:#806477;
 }
-.condition-text{
-  font-size:13px;
-  line-height:1.52;
-  text-align:center;
-}
-.condition-text .note{
-  color:#816d7e;
-  font-size:11px;
-}
-.condition-text strong{
-  color:#df6e9f;
-  font-size:16px;
-}
+
 /* =====================================================
-   TWO LOWER CARDS
+   แถว 4: ค่าใช้จ่าย + คุณสมบัติ
 ===================================================== */
-.lower-row{
+.bottom-row{
   display:grid;
-  grid-template-columns:
-    1.25fr
-    1fr;
-  gap:15px;
-  margin-top:15px;
+  grid-template-columns:1.25fr 1fr;
+  gap:1.4cqw;
 }
-.lower-card{
-  min-height:135px;
-  padding:
-    15px
-    20px;
-}
-.lower-card p{
-  font-size:12.5px;
-  line-height:1.55;
-}
-.lower-card p + p{
-  margin-top:7px;
-}
-.lower-card strong{
-  color:#df6e9f;
-}
+
 /* =====================================================
-   QUALIFICATIONS
+   แถว 5: footer
 ===================================================== */
-.qualification{
-  margin-top:15px;
-  padding:
-    14px
-    20px;
-  display:grid;
-  grid-template-columns:
-    170px
-    1fr;
-  align-items:center;
-  gap:20px;
-}
-.qualification-title{
-  text-align:center;
-  color:#302630;
-  font-size:30px;
-  font-weight:700;
-}
-.qualification-list{
-  display:grid;
-  grid-template-columns:
-    1fr
-    1fr
-    1fr;
-  gap:10px;
-}
-.qualification-item{
-  min-height:54px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:
-    8px
-    10px;
-  text-align:center;
-  border-radius:16px;
-  background:#fff2f9;
-  color:#554354;
-  font-size:11px;
-  line-height:1.4;
-  font-weight:600;
-}
-/* =====================================================
-   FOOTER
-===================================================== */
-.footer{
+.bottom{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin-top:14px;
 }
 .line{
-  color:#382d38;
-  font-size:20px;
+  display:flex;
+  align-items:center;
+  gap:.9cqw;
+  color:#423441;
+  font-size:2.7cqw;
   font-weight:600;
 }
-.line span{
-  color:#d875a8;
+.line strong{
+  color:#d976a9;
 }
-.footer-note{
-  padding:
-    6px
-    14px;
-  border-radius:16px;
-  background:
-    rgba(255,255,255,.68);
-  color:#80677b;
-  font-size:11px;
+.requirement{
+  padding:1cqw 2cqw;
+  border-radius:2cqw;
+  background:rgba(255,255,255,.72);
+  color:#82647d;
+  font-size:1.6cqw;
   font-weight:600;
-}
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-@media(max-width:900px){
-  body{
-    padding:12px;
-  }
-  .poster{
-    width:96vw;
-    border-radius:30px;
-  }
-  .layout{
-    padding:
-      28px
-      32px
-      24px;
-  }
-  .hero-box{
-    width:82%;
-    padding:
-      17px
-      20px;
-  }
-  .hero-box h1{
-    font-size:46px;
-  }
-  .hero-subtitle{
-    font-size:16px;
-  }
-  .free-label{
-    font-size:11px;
-  }
-  .card-title{
-    font-size:14px;
-  }
-  .service-card{
-    min-height:100px;
-    padding:11px 14px;
-  }
-  .service-list li{
-    font-size:10px;
-  }
-  .condition{
-    padding:11px 15px;
-  }
-  .condition-head{
-    font-size:14px;
-  }
-  .condition-text{
-    font-size:10px;
-  }
-  .condition-text .note{
-    font-size:8px;
-  }
-  .lower-card{
-    min-height:105px;
-    padding:11px 14px;
-  }
-  .lower-card p{
-    font-size:9px;
-  }
-  .qualification{
-    grid-template-columns:
-      125px
-      1fr;
-    padding:10px 14px;
-    gap:10px;
-  }
-  .qualification-title{
-    font-size:22px;
-  }
-  .qualification-item{
-    font-size:8px;
-    min-height:43px;
-  }
-  .line{
-    font-size:14px;
-  }
-  .footer-note{
-    font-size:8px;
-  }
-}
-/* =====================================================
-   SMALL MOBILE
-===================================================== */
-@media(max-width:600px){
-  body{
-    padding:4px;
-  }
-  .poster{
-    width:100vw;
-    border-width:3px;
-    border-radius:18px;
-  }
-  .layout{
-    padding:
-      21px
-      18px
-      17px;
-  }
-  .eyebrow{
-    padding:
-      4px
-      9px;
-    font-size:7px;
-  }
-  .hero{
-    margin-top:7px;
-  }
-  .hero-box{
-    width:88%;
-    padding:
-      12px
-      10px;
-    border-radius:19px;
-  }
-  .hero-box h1{
-    font-size:29px;
-  }
-  .hero-subtitle{
-    margin-top:6px;
-    font-size:9px;
-  }
-  .free-label{
-    margin-top:5px;
-    padding:
-      3px
-      8px;
-    font-size:6.5px;
-  }
-  .information{
-    margin-top:9px;
-  }
-  .service-row{
-    gap:7px;
-  }
-  .service-card{
-    min-height:75px;
-    padding:
-      7px
-      8px;
-    border-radius:13px;
-  }
-  .card-title{
-    gap:3px;
-    margin-bottom:3px;
-    font-size:8px;
-  }
-  .card-icon{
-    width:13px;
-    height:13px;
-    border-radius:4px;
-    font-size:7px;
-  }
-  .service-list li{
-    font-size:5.7px;
-    padding-left:8px;
-    margin:1px 0;
-  }
-  .service-list li::before{
-    font-size:6px;
-  }
-  .condition{
-    margin-top:7px;
-    padding:
-      7px
-      9px;
-    border-radius:13px;
-  }
-  .condition-head{
-    gap:3px;
-    margin-bottom:3px;
-    font-size:8px;
-  }
-  .condition-text{
-    font-size:5.5px;
-    line-height:1.45;
-  }
-  .condition-text .note{
-    font-size:4.7px;
-  }
-  .condition-text strong{
-    font-size:7px;
-  }
-  .lower-row{
-    gap:7px;
-    margin-top:7px;
-  }
-  .lower-card{
-    min-height:77px;
-    padding:
-      7px
-      8px;
-    border-radius:13px;
-  }
-  .lower-card p{
-    font-size:5.4px;
-    line-height:1.45;
-  }
-  .lower-card p + p{
-    margin-top:3px;
-  }
-  .qualification{
-    margin-top:7px;
-    padding:
-      7px
-      8px;
-    grid-template-columns:
-      62px
-      1fr;
-    gap:6px;
-    border-radius:13px;
-  }
-  .qualification-title{
-    font-size:13px;
-  }
-  .qualification-list{
-    gap:4px;
-  }
-  .qualification-item{
-    min-height:31px;
-    padding:
-      3px
-      4px;
-    border-radius:8px;
-    font-size:4.6px;
-  }
-  .footer{
-    margin-top:7px;
-  }
-  .line{
-    font-size:8px;
-  }
-  .footer-note{
-    padding:
-      3px
-      6px;
-    border-radius:7px;
-    font-size:4.5px;
-  }
-  .decor.one{
-    left:15px;
-    top:22px;
-    font-size:22px;
-  }
-  .decor.two{
-    right:14px;
-    top:23px;
-    font-size:18px;
-  }
-  .decor.three{
-    left:17px;
-    bottom:75px;
-    font-size:16px;
-  }
-  .decor.four{
-    right:18px;
-    bottom:55px;
-    font-size:13px;
-  }
 }
 </style>
 </head>
 <body>
 <main class="poster">
-  <!-- BACKGROUND SHAPES -->
+
+  <!-- BACKGROUND -->
   <div class="shape a"></div>
   <div class="shape b"></div>
   <div class="shape c"></div>
+
   <!-- DECORATION -->
   <div class="decor one">♡</div>
   <div class="decor two">✦</div>
   <div class="decor three">♡</div>
   <div class="decor four">✦</div>
+
   <div class="layout">
-    <!-- SMALL LABEL -->
-    <div class="eyebrow">
-      LOOKING FOR TEAMMATES
+
+    <!-- 1) HEADER -->
+    <div class="top">
+      <div class="eyebrow">LOOKING FOR TEAMMATES</div>
+      <div class="sticker">♡ TEAM WORK ♡</div>
     </div>
-    <!-- MAIN TITLE -->
+
+    <!-- 2) HERO -->
     <section class="hero">
-      <div class="hero-box">
-        <h1>
-          รับสมัคร <span>ลูกทีม</span>
-        </h1>
-        <p class="hero-subtitle">
-          ช่วยรับงานทำรายงานและ Canva
+      <div class="hero-left">
+        <div class="hero-title">
+          <h1>รับสมัคร<br><span>ลูกทีม</span></h1>
+          <p class="hero-subtitle">
+            ช่วยรับงานทำรายงาน<br>
+            และงาน Canva
+          </p>
+          <div class="free-label">♡ ไม่เสียค่าสมัคร</div>
+        </div>
+
+        <div class="skill-row">
+          <!-- HANDWRITING -->
+          <article class="info-card">
+            <div class="card-label"><span>✎</span>เขียนมือ</div>
+            <ul>
+              <li>เขียนรายงาน</li>
+              <li>เขียนงานลงสมุด</li>
+              <li>เขียนชีทบท iPad</li>
+            </ul>
+          </article>
+
+          <!-- IPAD -->
+          <article class="info-card">
+            <div class="card-label"><span>♡</span>iPad</div>
+            <ul>
+              <li>ทำ Mind Map</li>
+              <li>ทำสไลด์นำเสนอ</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <!-- CHARACTER -->
+      <div class="character-wrap">
+        <img
+          class="character"
+          src="./ไม่มีชื่อ 114_20261007180511.png"
+          alt="anime character"
+        >
+      </div>
+    </section>
+
+    <!-- 3) WORKING CONDITIONS -->
+    <article class="workflow">
+      <div class="workflow-title">
+        <span class="icon">✦</span>
+        เงื่อนไขการทำงาน
+      </div>
+      <p class="workflow-text">
+        เราเป็นคนหาลูกค้าและรับบรีฟงานให้ทั้งหมด
+        ลูกทีมมีหน้าที่ทำตามบรีฟและส่งงานตามที่กำหนด
+        <br>
+        งานไม่ได้มาตลอด แต่มีมาเรื่อย ๆ
+        <span class="note">(ประกาศแจ้งในกลุ่ม ใครว่างหรือสะดวกรับเคสไหนค่อยทักจอง)</span>
+        <br>
+        ค่าคอมมิชชันรับไปเลย <strong>60%</strong> ของราคางานทั้งหมด
+      </p>
+    </article>
+
+    <!-- 4) COST + QUALIFICATION -->
+    <div class="bottom-row">
+      <article class="info-card">
+        <div class="card-label"><span>♡</span>ค่าใช้จ่ายพัสดุ</div>
+        <p>
+          งานจัดส่ง เราออกค่าส่งและมีงบสนับสนุนค่าอุปกรณ์ให้เพิ่มเติม
+          <br>
+          งาน Canva ทำเสร็จส่งออนไลน์ รับเงินเต็มจำนวน ไม่มีค่าส่ง
         </p>
-        <div class="free-label">
-          ♡ ไม่เสียค่าสมัคร
-        </div>
-      </div>
-    </section>
-    <!-- INFORMATION -->
-    <section class="information">
-      <!-- SERVICES -->
-      <div class="service-row">
-        <article class="card service-card">
-          <div class="card-title">
-            <span class="card-icon">
-              ✎
-            </span>
-            เขียนมือ
-          </div>
-          <ul class="service-list">
-            <li>
-              เขียนรายงาน
-            </li>
-            <li>
-              เขียนงานลงสมุด
-            </li>
-            <li>
-              เขียนชีทบท iPad
-            </li>
-          </ul>
-        </article>
-        <article class="card service-card">
-          <div class="card-title">
-            <span class="card-icon">
-              ♡
-            </span>
-            iPad
-          </div>
-          <ul class="service-list">
-            <li>
-              ทำ Mind Map
-            </li>
-            <li>
-              ทำสไลด์นำเสนอ
-            </li>
-          </ul>
-        </article>
-      </div>
-      <!-- WORKING CONDITION -->
-      <article class="card condition">
-        <div class="condition-head">
-          <span class="card-icon">
-            ✦
-          </span>
-          เงื่อนไขการทำงาน
-        </div>
-        <div class="condition-text">
-          เราเป็นคนหาลูกค้าและรับรีฟงานให้ทั้งหมด
-          ลูกทีมมีหน้าที่ทำตามบรีฟและส่งงานตามที่กำหนด
-          <br>
-          งานไม่ได้มาตลอด แต่มีมาเรื่อย ๆ
-          <br>
-          <span class="note">
-            (ประกาศแจ้งในกลุ่ม ใครว่างหรือสะดวกรับเคสไหนค่อยทักจอง)
-          </span>
-          <br>
-          ค่าคอมมิชชันรับไปเลย
-          <strong>60%</strong>
-          ของราคางานทั้งหมด
-        </div>
       </article>
-      <!-- COST + CANVA -->
-      <div class="lower-row">
-        <article class="card lower-card">
-          <div class="card-title">
-            <span class="card-icon">
-              ♡
-            </span>
-            ค่าใช้จ่ายพัสดุ
-          </div>
-          <p>
-            งานจัดส่ง เราออกค่าส่งและมีงบสนับสนุน
-            ค่าอุปกรณ์ให้เพิ่มเติม
-          </p>
-          <p>
-            งาน Canva ทำเสร็จส่งออนไลน์
-            รับเงินเต็มจำนวน
-            <strong>ไม่มีค่าส่ง</strong>
-          </p>
-        </article>
-        <article class="card lower-card">
-          <div class="card-title">
-            <span class="card-icon">
-              ✓
-            </span>
-            สิ่งที่ต้องมี
-          </div>
-          <p>
-            มีความรับผิดชอบ ส่งงานตรงเวลา
-          </p>
-          <p>
-            ขยัน ตั้งใจทำงาน และพร้อมเรียนรู้
-          </p>
-          <p>
-            สะดวกจัดการเรื่องการส่งพัสดุ
-          </p>
-        </article>
-      </div>
-      <!-- QUALIFICATIONS -->
-      <section class="card qualification">
-        <h2 class="qualification-title">
-          คุณสมบัติ
-        </h2>
-        <div class="qualification-list">
-          <div class="qualification-item">
-            รับผิดชอบ<br>
-            ส่งงานตรงเวลา
-          </div>
-          <div class="qualification-item">
-            ขยัน<br>
-            พร้อมเรียนรู้
-          </div>
-          <div class="qualification-item">
-            จัดการ<br>
-            การส่งพัสดุได้
-          </div>
-        </div>
-      </section>
-      <!-- FOOTER -->
-      <footer class="footer">
-        <div class="line">
-          line :
-          <span>r13hjk</span>
-        </div>
-        <div class="footer-note">
-          รับงานตามความสะดวก · ไม่มีค่าสมัคร
-        </div>
-      </footer>
-    </section>
+
+      <article class="info-card">
+        <div class="card-label"><span>✓</span>คุณสมบัติ</div>
+        <ul>
+          <li>มีความรับผิดชอบ ส่งงานตรงเวลา</li>
+          <li>ขยัน ตั้งใจทำงาน และพร้อมเรียนรู้</li>
+          <li>สะดวกจัดการเรื่องการส่งพัสดุ</li>
+        </ul>
+      </article>
+    </div>
+
+    <!-- 5) FOOTER -->
+    <footer class="bottom">
+      <div class="line">line : <strong>r13hjk</strong></div>
+      <div class="requirement">รับงานตามความสะดวก · ไม่มีค่าสมัคร</div>
+    </footer>
+
   </div>
 </main>
 </body>
